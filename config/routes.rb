@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   namespace :admin do
     root 'dashboard#index'
+    resources :pages do
+      collection do
+        get :manage
+
+        # required for Sortable GUI server side actions
+        post :rebuild
+      end
+    end
   end
 
   devise_for :users
@@ -59,6 +67,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  get "*path" => "pages#show"
-
+  get '*path' => 'pages#show'
 end

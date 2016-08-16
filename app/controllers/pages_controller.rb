@@ -1,7 +1,11 @@
 class PagesController < ApplicationController
 
   def show
-    @page = Page.where(slug: params[:slug]).first
+    slug = ""
+    if params[:path].present?
+      slug = params[:path]
+    end
+    @page = Page.where(slug: slug).first
   end
 
 end

@@ -25,6 +25,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 
+gem 'awesome_nested_set' # or any similar gem (gem 'nested_set')
+gem "the_sortable_tree", "~> 2.5.0"
+
 gem 'adminlte-rails', github: 'HanseHype/adminlte-rails'
 gem 'ionicons-rails'
 gem 'font-awesome-rails'
