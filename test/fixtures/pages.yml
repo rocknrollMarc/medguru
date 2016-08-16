@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  slug: MyString
+  meta_description: MyString
+  open_graph_title: MyString
+  open_graph_type: MyString
+  open_graph_image: MyString
+  open_graph_video: MyString
+
+two:
+  title: MyString
+  slug: MyString
+  meta_description: MyString
+  open_graph_title: MyString
+  open_graph_type: MyString
+  open_graph_image: MyString
+  open_graph_video: MyString
