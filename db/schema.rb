@@ -11,13 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816143826) do
+ActiveRecord::Schema.define(version: 20160816164509) do
 
   create_table "accesses", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "title",            limit: 255
+    t.string   "slug",             limit: 255
+    t.string   "meta_description", limit: 255
+    t.string   "open_graph_title", limit: 255
+    t.string   "open_graph_type",  limit: 255
+    t.string   "open_graph_image", limit: 255
+    t.string   "open_graph_video", limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "pages", ["slug"], name: "index_pages_on_slug", unique: true, using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.string   "title",      limit: 255
