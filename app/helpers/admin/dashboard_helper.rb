@@ -15,4 +15,18 @@ module Admin::DashboardHelper
       asset_path("default_avatar_thumb.png")
     end
   end
+
+  def is_active? controller
+    "active" if controller?(controller) && action?("index", "show", "new", "edit")
+  end
+
+
+  def controller?(*controller)
+    controller.include?(params[:controller])
+  end
+
+  def action?(*action)
+    action.include?(params[:action])
+  end
+
 end

@@ -2,31 +2,31 @@
 <ul class="sidebar-menu">
   <li class="header">ADMINISTRATION</li>
   <!-- Optionally, you can add icons to the links -->
-  <li class="active">
+  <li class="<%= is_active?("admin/dashboard") %>">
     <%= link_to admin_root_path  do %>
       <i class="fa fa-tachometer"></i>
       <span>Dashboard</span>
       <% end %>
   </li>
-  <li>
+  <li class="<%= is_active?("admin/pages") %>">
     <%= link_to admin_pages_path  do %>
       <i class="fa fa-file-text"></i>
       <span>Seiten</span>
     <% end %>
   </li>
-  <li>
+  <li class="<%= is_active?("admin/questions") %>">
     <a href="#">
       <i class="fa fa-question"></i>
       <span>Fragen</span>
     </a>
   </li>
-  <li>
+  <li class="<%= is_active?("admin/vouchers") %>">
     <a href="#">
       <i class="fa fa-ticket"></i>
       <span>Gutscheine</span>
     </a>
   </li>
-  <li>
+  <li class="<%= is_active?("admin/course") %>">
     <a href="#">
       <i class="fa fa-book"></i>
       <span>Seminare</span>
