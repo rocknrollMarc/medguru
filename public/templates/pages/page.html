@@ -1,3 +1,4 @@
+{{page}}
 <div class="box-body">
   <div class="form-group">
     <label for="page_title">Seiten Titel eingeben</label>
@@ -9,8 +10,10 @@
     <input class="form-control" placeholder="Pfad zur seite" type="text" name="page[slug]" id="page_slug" ng-model="page.slug">
     <p class="help-block">Hier wird der Pfad für die Seite generiert.</p>
   </div>
-  <h3 class="box-title">Textblock</h3>
+  <h3 class="box-title">Textabschnitte</h3>
   <div ng-repeat="part in page.parts">
     <div ng-include src="'/templates/pages/'+part.type+'.html'"></div>
   </div>
+
+
 </div>
