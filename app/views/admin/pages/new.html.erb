@@ -36,10 +36,9 @@
         </div>
       </div>
 
+      <%= form_for @page, :url => admin_pages_path(), :html => { :class => :form, role: 'form' } do  |f| %>
       <div class="box-body">
-        <div id="new_page" class="dataTables_wrapper form-inline dt-bootstrap">
-          <%= form_for @page, :url => admin_pages_path(), :html => { :class => :form } do  |f| %>
-            <%= render 'form' %>
-          <% end %>
-        </div>
+        <%= render 'form', f: f %>
       </div>
+      <% end %>
+    </div>

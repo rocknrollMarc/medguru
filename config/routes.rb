@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   namespace :admin do
+    mount Ckeditor::Engine => '/ckeditor'
     root 'dashboard#index'
     resources :pages do
       collection do
@@ -67,5 +69,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  get '*path' => 'pages#show'
+  #get '*path' => 'pages#show'
 end

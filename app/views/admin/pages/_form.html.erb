@@ -1,0 +1,17 @@
+<% content_for :js do %>
+  <script type="text/javascript">
+    window.form_object = <%= raw @page.to_json(include: {parts: {only: [:id, :data, :position, :type]}}) %>
+  </script>
+
+  <%= javascript_include_tag 'admin_pages' %>
+
+<% end %>
+
+<% content_for :angular do; raw 'ng-app="page"'; end; %>
+
+
+<!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div ng-view></div>

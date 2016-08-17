@@ -9,4 +9,7 @@ class Admin::PagesController < Admin::AdminController
     @page = Page.new
   end
 
+  def create
+  end
+
 end

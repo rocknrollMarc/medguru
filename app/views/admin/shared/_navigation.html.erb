@@ -3,10 +3,10 @@
   <li class="header">ADMINISTRATION</li>
   <!-- Optionally, you can add icons to the links -->
   <li class="active">
-    <a href="#">
+    <%= link_to admin_root_path  do %>
       <i class="fa fa-tachometer"></i>
       <span>Dashboard</span>
-    </a>
+      <% end %>
   </li>
   <li>
     <%= link_to admin_pages_path  do %>
