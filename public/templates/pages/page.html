@@ -1,0 +1,16 @@
+<div class="box-body">
+  <div class="form-group">
+    <label for="page_title">Seiten Titel eingeben</label>
+    <input class="form-control" placeholder="Seiten Titel eingeben" type="text" name="page[title]" id="page_title" ng-model="page.title">
+    <p class="help-block">Dies wird als Link-Name angezeigt und als Webseiten Titel angezeigt</p>
+  </div>
+  <div class="form-group">
+    <label for="page_slug">Der Seitenpfad</label>
+    <input class="form-control" placeholder="Pfad zur seite" type="text" name="page[slug]" id="page_slug" ng-model="page.slug">
+    <p class="help-block">Hier wird der Pfad für die Seite generiert.</p>
+  </div>
+  <h3 class="box-title">Textblock</h3>
+  <div ng-repeat="part in page.parts">
+    <div ng-include src="'/templates/pages/'+part.type+'.html'"></div>
+  </div>
+</div>
