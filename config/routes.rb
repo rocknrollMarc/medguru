@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
+
+
   mount Ckeditor::Engine => '/ckeditor'
   namespace :admin do
     mount Ckeditor::Engine => '/ckeditor'
     root 'dashboard#index'
+    resources :questions
+    resources :categories
     resources :pages do
       collection do
         get :manage
-
-        # required for Sortable GUI server side actions
         post :rebuild
       end
     end
