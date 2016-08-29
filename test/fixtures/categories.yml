@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  scope: MyString
+  name: MyString
+  category_id: 
+
+two:
+  scope: MyString
+  name: MyString
+  category_id: 

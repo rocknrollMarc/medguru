@@ -1,0 +1,37 @@
+TMS
+TMS > Mathe
+TMS > Textverständnis
+TMS > Fakten lernen
+TMS > Schauchfiguren
+TMS > Muster zuordnen
+TMS > Diagramme und Tabellen
+TMS > Med.-Na. Grundverständnis
+TMS > Figuren Lernen
+TMS > Konzentriertes Arbeiten
+MEDAT
+MEDAT > Physik
+MEDAT > Physik > Physikalische Größen und Einheiten
+MEDAT > Physik > Allgemeine Mechanik
+MEDAT > Physik > Wärmelehre
+MEDAT > Physik > Schwingungen und Wellen
+MEDAT > Physik > Elektrizitätslehre allgemein
+MEDAT > Physik > Elektromagnetische Wellen und Licht
+MEDAT > Physik > Gleichstrom / Wechselstrom
+MEDAT > Physik > Optik
+MEDAT > Physik > Atomphysik
+MEDAT > Mathematik
+MEDAT > Mathematik > Integralrechnung
+MEDAT > Mathematik > Algebra
+MEDAT > Mathematik > Einheitskenntisse
+MEDAT > Mathematik > Geometrie
+MEDAT > Mathematik > Logarithmen
+MEDAT > Mathematik > Geradenfunktionen
+MEDAT > Mathematik > Potenzfunktionen
+MEDAT > Mathematik > Differentialrechnung
+MEDAT > Mathematik > Trigonometrie und Winkelfunktionen
+MEDAT > Biologie
+MEDAT > Biologie > Genetik allgemein
+MEDAT > Biologie > Fortpflanzung und Entwicklung des Menschen
+MEDAT > Biologie > Cytologie
+MEDAT > Biologie > Genetik auf molekularer Ebene
+MEDAT > Biologie > Körper des Menschen
