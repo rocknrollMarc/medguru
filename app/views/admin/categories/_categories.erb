@@ -1,0 +1,67 @@
+<div class="dataTables_wrapper form-inline dt-bootstrap">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="dataTables_length" id="example1_length">
+        <label>Zeige
+          <select name="per" aria-controls="per" class="form-control input-sm">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+          Einträge</label>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div id="example1_filter" class="dataTables_filter">
+        <label>Suche:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= just_tree  @pages,  namespace: :backend, rebuild_url: rebuild_admin_pages_url, type: :sortable  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-bordered table-striped dataTable">
+        <thead>
+          <tr role="row">
+            <th>Name</th>
+            <th>Anzahl Unterkategoriesn</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% if categories.any? %>
+        <tbody>
+          <% for category in categories %>
+          <tr role="row">
+            <td><%= category.name %></td>
+            <td><%= category.categories.count %></td>
+            <td><%= link_to 'Details', admin_category_path(category) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Zeige
+        <%= categories.current_page * categories.offset_value + 1 %>
+        bis
+        <%= categories.current_page * categories.offset_value  + categories.count %>
+        von
+        <%= categories.total_count %>
+        Einträge</div>
+    </div>
+    <div class="col-sm-7">
+      <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+        <%= paginate categories %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,8 @@ module Admin::DashboardHelper
   def agent_name
     if current_user.try(:name).present?
       current_user.name
+    elsif current_user.try(:email).present?
+      current_user.email
     else
       'Ohne Namen'
     end
