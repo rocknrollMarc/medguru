@@ -15,10 +15,10 @@
     <% end %>
   </li>
   <li class="<%= is_active?("admin/questions") %>">
-    <a href="#">
+    <%= link_to admin_questions_path  do %>
       <i class="fa fa-question"></i>
       <span>Fragen</span>
-    </a>
+    <% end %>
   </li>
   <li class="<%= is_active?("admin/vouchers") %>">
     <a href="#">
@@ -38,11 +38,11 @@
       <span>Tests</span>
     </a>
   </li>
-  <li>
-    <a href="#">
+  <li class="<%= is_active?("admin/users") %>">
+    <%= link_to admin_users_path  do %>
       <i class="fa fa-users"></i>
       <span>Benutzer</span>
-    </a>
+      <% end %>
   </li>
 
   <li>

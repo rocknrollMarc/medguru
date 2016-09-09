@@ -1,15 +1,11 @@
 class Role < ActiveRecord::Base
+  has_and_belongs_to_many :users, :join_table => :users_roles
 
-  USER = "USER"
-  SUPERADMIN="SUPERADMIN"
-  ADMIN="ADMIN"
-  AUTHOR="AUTHOR"
-  TUTOR="TUTOR"
-  LOGISTIK="LOGISTIK"
-  BUCHHALTUNG="BUCHHALTUNG"
+  belongs_to :resource, polymorphic: true, required: false
 
-  TEAM = %w(SUPERADMIN ADMIN AUTHOR TUTOR LOGISTIK BUCHHALTUNG)
+  validates :resource_type,
+            :inclusion => { :in => Rolify.resource_types },
+            :allow_nil => true
 
-  belongs_to :user
-
+  scopify
 end

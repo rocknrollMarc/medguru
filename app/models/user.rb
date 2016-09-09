@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  belongs_to :role
-
+ accepts_nested_attributes_for :roles, allow_destroy: true
   after_initialize :check_role
 
   attr_accessor :email_confirmation
@@ -21,13 +21,13 @@ class User < ActiveRecord::Base
 
 
   def check_role
-    if self.role.blank?
-      self.role = Role.find_by_name(Role::USER)
+    if self.roles.blank?
+      add_role 'USER'
     end
   end
 
   def is_team?
-    Role::TEAM.include?(self.role.name)
+    %w(SUPERADMIN ADMIN AUTHOR LEKTOR ANSPRECHPARTNER KURSMANAGER TUTOR LOGISTIK BUCHHALTUNG).map{|x| has_role? (x)}.any?
   end
 
 

@@ -1,0 +1,55 @@
+<% content_for :content_header do %>
+<section class="content-header">
+  <h1>
+    Benutzer Detail
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <%= link_to admin_root_path do %>
+      <i class="fa fa-dashboard"></i>
+      Home - Dashboard
+      <% end %>
+    </li>
+    <li >
+      <%= link_to admin_users_path  do %>
+      <i class="fa fa-users"></i>
+      <span>Benutzer</span>
+      <% end %>
+    </li>
+    <li class="active">
+      <%= link_to admin_users_path  do %>
+      <i class="fa fa-user"></i>
+      <span>Benutzer <%= @user.id %></span>
+      <% end %>
+    </li>
+  </ol>
+</section>
+<% end %>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Benutzer-ID : <%= @user.id %></h3>
+      </div>
+
+      <div class="box-body">
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+          <div class="row">
+            <div class="col-sm-4">
+              <%= image_tag @user.avatar.thumb %>
+            </div>
+            <div class="col-sm-8">
+              <ul>
+                <li><strong>E-Mail : </strong><%= @user.email %></li>
+                <li><strong>Benutzername : </strong><%= @user.name %></li>
+                <li><strong>Role : </strong><%= @user.roles.map{|x| x.name}.join(', ') %></li>
+              </ul>
+            </div>
+            <div class="col-sm-12">
+              <br />
+              <%= link_to 'Bearbeiten', edit_admin_user_path(@user), class: 'btn btn-default btn-sm' %>
+            </div>
+          </div>
+        </div>
+      </div>

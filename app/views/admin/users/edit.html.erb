@@ -1,0 +1,87 @@
+<% content_for :content_header do %>
+<section class="content-header">
+  <h1>
+    Benutzer bearbeiten
+
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <%= link_to admin_root_path do %>
+      <i class="fa fa-dashboard"></i>
+      Home - Dashboard
+      <% end %>
+    </li>
+    <li class="active">
+      <%= link_to admin_users_path  do %>
+      <i class="fa fa-users"></i>
+      <span>Benutzer</span>
+      <% end %>
+    </li>
+    <li class="active">
+      <%= link_to admin_users_path  do %>
+      <i class="fa fa-user"></i>
+      <span>Benutzer <%= @user.id %></span>
+      <% end %>
+    </li>
+  </ol>
+</section>
+<% end %>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Benutzer-ID : <%= @user.id %></h3>
+      </div>
+
+
+
+
+      <div class="box-body">
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+
+          <% flash.each do |key, msg| %>
+          <div class="row">
+            <div class="alert alert-danger alert-dismissible">
+              <%= msg %>
+            </div>
+          </div>
+        <% end %>
+
+          <div class="row">
+            <%= form_for [:admin, @user], html: {class: 'form'} do |f| %>
+                        <% if @user.errors.any? %>
+            <div class="col-sm-12">
+              <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Fehler!</h4>
+                <ul>
+                  <% @location.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+            <% end %>
+            <div class="col-sm-4">
+              <%= image_tag @user.avatar.thumb %>
+              <%= f.file_field :avatar %>
+            </div>
+            <div class="col-sm-8">
+              <ul>
+                <li><%= f.label :email %> : <%=f.text_field :email %></li>
+                <li><%= f.label :name %>: <%=f.text_field :name %></li>
+                <li><%= f.collection_check_boxes(:role_ids, Role.all, :id, :name, :item_wrapper_class => 'checkbox_container', checked: f.object.role_ids) do |b| %>
+                    <%=b.label(class: "check_box") {  b.check_box(checked: b.value, class: "check_box") + " "+  b.text }  %> <br />
+                <% end %>
+</li>
+              </ul>
+            </div>
+            <div class="col-sm-12">
+              <br />
+              <%= f.submit 'Speichern', class: 'btn btn-default btn-sm' %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>

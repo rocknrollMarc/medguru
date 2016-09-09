@@ -17,7 +17,7 @@ CSV.foreach(categories) do |row|
 end
 
 
-ROLES = %w(USER SUPERADMIN ADMIN AUTHOR TUTOR LOGISTIK BUCHHALTUNG)
+ROLES = %w(USER SUPERADMIN ADMIN AUTHOR LEKTOR ANSPRECHPARTNER KURSMANAGER TUTOR LOGISTIK BUCHHALTUNG)
 
 for role in ROLES
   Role.where(name: role).first_or_create
@@ -29,6 +29,6 @@ user = User.where(email: "superadmin@medgurus.de").first_or_initialize
 user.email_confirmation="superadmin@medgurus.de"
 user.password=default_password
 user.password_confirmation=default_password
-user.role = Role.find_by_name('SUPERADMIN')
+user.add_role "SUPERADMIN"
 user.skip_confirmation!
 user.save!

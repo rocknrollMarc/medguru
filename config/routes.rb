@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     root 'dashboard#index'
     resources :questions
     resources :categories
+    resources :questions
+    resources :users, except: [:new, :create, :destroy]
     resources :pages do
       collection do
         get :manage
