@@ -38,13 +38,14 @@
       <span>Tests</span>
     </a>
   </li>
+  <% if can? :manage, :users %>
   <li class="<%= is_active?("admin/users") %>">
     <%= link_to admin_users_path  do %>
       <i class="fa fa-users"></i>
       <span>Benutzer</span>
       <% end %>
   </li>
-
+  <% end %>
   <li>
     <a href="#">
       <i class="fa fa-cart-plus"></i>

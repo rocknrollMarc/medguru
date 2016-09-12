@@ -5,7 +5,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
- accepts_nested_attributes_for :roles, allow_destroy: true
+
+  has_many :working_scopes
+  
+  accepts_nested_attributes_for :working_scopes, allow_destroy: true
+
+  accepts_nested_attributes_for :roles, allow_destroy: true
   after_initialize :check_role
 
   attr_accessor :email_confirmation

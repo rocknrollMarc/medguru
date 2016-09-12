@@ -24,10 +24,10 @@
   <div class="box-header">
     <h3 class="box-title">Alle Kategorien</h3>
     <ul class="pagination pagination-sm no-margin pull-right">
-      <li class="active"><%=link_to 'Fragen', admin_categories_path() %></li>
+      <li class="active"><%=link_to 'Fragen', admin_categories_path(scope: 'questions') %></li>
       <li><%=link_to 'Seminare', admin_categories_path(scope: 'seminare') %></li>
       <li><%=link_to 'Tutorials', admin_categories_path(scope: 'tutorials') %></li>
-      <li><%=link_to 'Test', admin_categories_path(scope: 'books') %></li>
+      <li><%=link_to 'Test', admin_categories_path(scope: 'test') %></li>
       <li><%=link_to 'Bücher', admin_categories_path(scope: 'books') %></li>
     </ul>
   </div>

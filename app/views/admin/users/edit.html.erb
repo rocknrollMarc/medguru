@@ -49,14 +49,14 @@
         <% end %>
 
           <div class="row">
-            <%= form_for [:admin, @user], html: {class: 'form'} do |f| %>
+            <%= nested_form_for [:admin, @user], html: {class: 'form'} do |f| %>
                         <% if @user.errors.any? %>
             <div class="col-sm-12">
               <div class="alert alert-danger alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h4><i class="icon fa fa-ban"></i> Fehler!</h4>
                 <ul>
-                  <% @location.errors.full_messages.each do |msg| %>
+                  <% @user.errors.full_messages.each do |msg| %>
                     <li><%= msg %></li>
                   <% end %>
                 </ul>
@@ -77,6 +77,14 @@
 </li>
               </ul>
             </div>
+            <div class="col-sm-12">
+
+            <div class="working_scopes">
+              <%= f.fields_for :working_scopes %>
+              <%= f.link_to_add "Arbeitsbereich hinzufügen", :working_scopes , class:'btn btn-default btn-sm'%>
+            </div>
+          </div>
+
             <div class="col-sm-12">
               <br />
               <%= f.submit 'Speichern', class: 'btn btn-default btn-sm' %>

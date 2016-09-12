@@ -1,2 +1,77 @@
-<h1>Admin::Questions#index</h1>
-<p>Find me in app/views/admin/questions/index.html.erb</p>
+<% content_for :content_header do %>
+<section class="content-header">
+  <h1>
+    Fragen Übersicht
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <%= link_to admin_root_path do %>
+      <i class="fa fa-dashboard"></i>
+      Home - Dashboard
+      <% end %>
+    </li>
+    <li class="active">
+      <%= link_to admin_questions_path  do %>
+      <i class="fa fa-question"></i>
+      <span>Fragen</span>
+      <% end %>
+    </li>
+  </ol>
+</section>
+<% end %>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Alle Fragen</h3>
+
+        <div class="box-tools pull-right" data-toggle="tooltip" title="" data-original-title="Neue Seite erstellen">
+            <%= link_to 'Neue Frage erstellen', new_admin_question_path, type: "button", class:"btn btn-default btn-sm", title: 'Neue Seite erstellen' %>
+        </div>
+
+
+      </div>
+
+      <div class="box-body">
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+          <%= render 'admin/shared/box_header' %>
+          <div class="row">
+            <div class="col-sm-12">
+              <table class="table">
+                <tr>
+                  <th>ID</th>
+                  <th>Interne Name</th>
+                  <th>Kategorie</th>
+                  <th>Ersteller</th>
+                  <th>Status</th>
+                  <th>Aktionen</th>
+                </tr>
+                <% for question in @questions %>
+                  <tr>
+                    <td><%= question.id %></td>
+                    <td><%= question.intern_name %></td>
+                    <td><%= question.category %></td>
+                    <td><%= question.owner %></td>
+                    <td><%= question.status %></td>
+                    <td><%= link_to 'Details zeigen', admin_question_path(question) %>
+                  </tr>
+                <% end %>
+
+              </table>
+
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5">
+              <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+            </div>
+            <div class="col-sm-7">
+              <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                <%= paginate @questions if @questions.any? %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

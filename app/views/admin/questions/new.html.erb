@@ -1,2 +1,89 @@
-<h1>Admin::Questions#new</h1>
-<p>Find me in app/views/admin/questions/new.html.erb</p>
+<% content_for :content_header do %>
+<section class="content-header">
+  <h1>
+    Neue Fragen
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <%= link_to admin_root_path do %>
+      <i class="fa fa-dashboard"></i>
+      Home - Dashboard
+      <% end %>
+    </li>
+    <li class="active">
+      <%= link_to new_admin_question_path  do %>
+      <i class="fa fa-question"></i>
+      <span>Neue Fragen</span>
+      <% end %>
+    </li>
+  </ol>
+</section>
+<% end %>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Neue Frage</h3>
+
+      </div>
+
+      <div class="box-body">
+
+        <%= nested_form_for [:admin, @question] do |f| %>
+
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+
+          <% flash.each do |key, msg| %>
+          <div class="row">
+            <div class="alert alert-danger alert-dismissible">
+              <%= msg %>
+            </div>
+          </div>
+          <% end %>
+          <% if @question.errors.any? %>
+          <div class="col-sm-12">
+            <div class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <h4>
+                <i class="icon fa fa-ban"></i>
+                Fehler!</h4>
+              <ul>
+                <% @question.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <% end %>
+        </div>
+
+          <div class="form-group">
+            <%= f.label :intern_name %>
+            <%= f.text_field :intern_name, placeholder: 'Der Interne Name der Frage', class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :difficulty %>
+            <%= f.select :difficulty, options_for_select([['Einfach', 30], ['Mittel', 60], ['Schwer', 90]], f.object.difficulty),{include_blank: "Schwierigkeit auswählen"}, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.cktext_area :body,cols: 40, ckeditor: { toolbar: 'mini' } %>
+          </div>
+
+          <div class="answers">
+            <%= f.fields_for :answers %>
+            <p style="text-align: right"><%= f.link_to_add "Antwort hinzufügen", :answers , class:'btn btn-default btn-sm'%></p>
+          </div>
+
+          <div class="answers">
+            <%= f.submit 'Speichern', class:'btn btn-default btn-sm' %>
+          </div>
+
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>

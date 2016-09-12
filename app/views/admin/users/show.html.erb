@@ -34,8 +34,20 @@
       </div>
 
       <div class="box-body">
+
+
         <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
           <div class="row">
+
+            <% flash.each do |key, msg| %>
+            <div class="col-sm-12">
+              <div class="alert alert-danger alert-dismissible">
+                <%= msg %>
+              </div>
+            </div>
+          <% end %>
+
+
             <div class="col-sm-4">
               <%= image_tag @user.avatar.thumb %>
             </div>
