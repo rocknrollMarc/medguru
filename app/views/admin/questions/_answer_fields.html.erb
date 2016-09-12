@@ -1,0 +1,19 @@
+
+<div class="form-group">
+  <%= f.label :body do %>
+  Lösung:
+  <% end %>
+  <div class="form-group" style="width:100%">
+    <div class="pull-left">
+      <%= f.label :correct_answer, 'Richtige Antwort' %>
+      <%= f.check_box :correct_answer %>
+    </div>
+    <div class="pull-right" data-toggle="tooltip" title="" data-original-title="Antwort entfernen">
+      <%= f.link_to_remove "Diese Antwort entfernen", class:'btn btn-default btn-sm' %>
+    </div>
+    <div style="clear: both"></div>
+  </div>
+  <%= f.cktext_area :body,cols: 40, ckeditor: { toolbar: 'mini' } %>
+
+
+</div>
