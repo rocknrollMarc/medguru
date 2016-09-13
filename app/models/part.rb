@@ -13,6 +13,11 @@ class Part < ActiveRecord::Base
 
   after_initialize :check_data
 
+
+  def self.modules
+    ['SliderPart', 'TextPart', 'NewsPart', 'VideoInfoPart', 'InfoPart', 'AboutBox', 'FeedbackBox']
+  end
+
   def check_data
     self.data ||= {}
   end

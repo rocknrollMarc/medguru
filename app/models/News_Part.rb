@@ -1,0 +1,3 @@
+class NewsPart < Part
+  
+end

@@ -1,0 +1,44 @@
+<% content_for :content_header do %>
+<section class="content-header">
+  <h1>
+    Layout Detail
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <%= link_to admin_root_path do %>
+      <i class="fa fa-dashboard"></i>
+      Home - Dashboard
+      <% end %>
+    </li>
+    <li class="active">
+      <%= link_to admin_layouts_path  do %>
+      <i class="fa fa-edit"></i>
+      <span>Layout</span>
+      <% end %>
+    </li>
+  </ol>
+</section>
+<% end %>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Layout: <%= @layout.name %></h3>
+      </div>
+
+      <div class="box-body">
+        <%= link_to 'Bearbeiten', edit_admin_layout_path(@layout) %> <br /><br />
+
+        Vorlage: <%= @layout.template %><br />
+
+        <% if @layout.layout_parts.any? %>
+          <% for layout_part in @layout.layout_parts %>
+            <%= layout_part.name %> <br />
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

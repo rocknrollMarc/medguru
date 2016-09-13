@@ -1,0 +1,5 @@
+<div class="form-group">
+  <%= f.label :name, 'Textart' %>
+  <%= f.select :name,
+              options_for_select(Part.modules, f.object.name),{include_blank: "Textart auswählen"}, class: 'form-control' %>
+</div>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :questions
     resources :categories
     resources :questions
+    resources :layouts
     resources :users, except: [:new, :create, :destroy]
     resources :pages do
       collection do

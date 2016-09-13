@@ -4,7 +4,6 @@ class CreateParts < ActiveRecord::Migration
       t.text :data
       t.integer :page_id
       t.string :type
-
       t.timestamps null: false
     end
     add_index :parts, :page_id
