@@ -1,2 +1,34 @@
-<h1>Admin::Questions#show</h1>
-<p>Find me in app/views/admin/questions/show.html.erb</p>
+<% content_for :content_header do %>
+<section class="content-header">
+  <h1>
+    Details Fragen
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <%= link_to admin_root_path do %>
+      <i class="fa fa-dashboard"></i>
+      Home - Dashboard
+      <% end %>
+    </li>
+    <li class="active">
+      <%= link_to admin_layouts_path  do %>
+      <i class="fa fa-edit"></i>
+      <span>Fragen</span>
+      <% end %>
+    </li>
+  </ol>
+</section>
+<% end %>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+      </div>
+
+      <div class="box-body">
+        ToDo
+      </div>
+    </div>
+  </div>
+</div>
