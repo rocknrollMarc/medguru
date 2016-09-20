@@ -1,0 +1,90 @@
+@import "bourbon";
+.navigation_container {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  border-bottom: 1px solid #ddd;
+  background: image-url('glass.png');
+  padding: 10px 0 0;
+  left: 0;
+  right: 0;
+  @include transition-property(all);
+  @include transition-duration(1.0s);
+  @include transition-timing-function(ease-in);
+  @include transition-delay(0.5s);
+  .gradient {
+    background: #004799;
+    background: -moz-linear-gradient(left, #004799 0%, #69aece 50%, #004799 100%);
+    background: -webkit-linear-gradient(left, #004799 0%,#69aece 50%,#004799 100%);
+    background: linear-gradient(to right, #004799 0%,#69aece 50%,#004799 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=  '#004799', endColorstr='#004799',GradientType=1 );
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    @include transition(all 0.3s ease-in-out);
+    @include transition(opacity 0.3s ease-in 0s);
+    z-index: 5;
+  }
+  .row {
+    z-index: 1000;
+    position: relative;
+  }
+  nav {
+    padding-top: 1rem;
+    ul {
+      li {
+        span {
+          display: block;
+          padding: 0.7rem 1rem 2rem;
+          line-height: 1;
+          color: white;
+          font-weight: bold;
+        }
+        a {
+          color: white;
+          text-transform: uppercase;
+          font-weight: bold;
+          padding-bottom: 2rem;
+          height: 38px;
+          &:hover {
+            border-bottom: 1px solid white;
+          }
+          i {
+            font-size: 1.4rem;
+            padding-bottom: 0;
+          }
+          span.arrow{
+            display: inline-block;
+            padding: 0px;
+            @include transform(rotate(90deg));
+            @include transition-property(transform);
+            @include transition-duration(0.3s);
+            font-weight: lighter;
+          }
+          &.click{
+            span.arrow{
+              @include transform(rotate(-90deg));
+
+            }
+          }
+        }
+      }
+    }
+  }
+  &.clicked {
+    .gradient {
+      opacity: 1;
+    }
+  }
+}
+.submenu{
+  display: none;
+  color: white;
+}
+.megaslider {
+  z-index: 1;
+  height: 450px;
+}

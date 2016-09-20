@@ -1,0 +1,117 @@
+<div class="navigation_container">
+  <div class="gradient"></div>
+  <div class="row">
+    <div class="large-3 columns">
+      <%= link_to root_path do %>
+      <%= image_tag 'logo.png' %>
+      <% end %>
+    </div>
+    <div class="large-9 columns">
+      <nav class="main_nav">
+        <ul class="nav menu align-right">
+          <li><%= link_to 'cards' do %>
+            <%= image_tag 'warenkorb.png' %>
+            <% end %></li>
+          <li><%= link_to 'Login', '' %></li>
+          <li>
+            <span>|</span>
+          </li>
+          <li class="dropdown"><%= link_to '' do %>
+            Kurse
+            <span class="arrow">></span>
+            <% end %>
+          </li>
+          <li class="dropdown"><%= link_to '' do %>
+            INFOS
+            <span class="arrow">></span>
+            <% end %>
+          </li>
+          <li class="dropdown"><%= link_to '' do %>
+            E-Learning
+            <span class="arrow">></span>
+            <% end %>
+          </li>
+          <li class="dropdown"><%= link_to '' do %>
+            Bücher
+            <span class="arrow">></span>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="large-12 submenu">
+      <div class="large-4 columns end">
+        <h3>One</h4>
+        <p>lorem ipsum</p>
+      </div>
+      <div class="large-4 columns end">
+        <h3>One</h4>
+        <p>lorem ipsum</p>
+      </div>
+      <div class="large-4 columns end">
+        <h3>One</h4>
+        <p>lorem ipsum</p>
+      </div>
+      <div class="large-4 columns end">
+        <h3>One</h4>
+        <p>lorem ipsum</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="orbit" role="region" aria-label="Startpage Banner" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
+  <ul class="orbit-container">
+    <button class="orbit-previous">&#9664;&#xFE0E;</button>
+    <button class="orbit-next">&#9654;&#xFE0E;</button>
+    <li class="is-active orbit-slide">
+      <div style="background-image: url(<%= image_url 'stock1.jpg' %>); height: 640px; padding-top: 150px;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
+        <div class="row">
+          <div class="large-12">
+            <h3 class="text-center">1: You can also throw some text in here!</h3>
+            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam, beatae distinctio cupiditate ipsam eligendi tempora expedita.</p>
+            <h3 class="text-center">This Orbit slider does not use animations.</h3>
+          </div>
+        </div>
+      </div>
+
+    </li>
+    <li class="orbit-slide">
+      <div style="background-image: url(<%= image_url 'stock2.jpg' %>); height: 640px; padding-top: 150px;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
+        <div class="row">
+          <div class="large-12">
+            <h3 class="text-center">2: You can also throw some text in here!</h3>
+            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam, beatae distinctio cupiditate ipsam eligendi tempora expedita.</p>
+            <h3 class="text-center">This Orbit slider does not use animations.</h3>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="orbit-slide">
+      <div style="background-image: url(<%= image_url 'stock1.jpg' %>); height: 640px; padding-top: 150px;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
+        <div class="row">
+          <div class="large-12">
+            <h3 class="text-center">3: You can also throw some text in here!</h3>
+            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam, beatae distinctio cupiditate ipsam eligendi tempora expedita.</p>
+            <h3 class="text-center">This Orbit slider does not use animations.</h3>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <nav class="orbit-bullets" style="margin-top: -40px">
+    <button class="is-active" data-slide="0">
+      <span class="show-for-sr">First slide details.</span>
+      <span class="show-for-sr">Current Slide</span>
+    </button>
+    <button data-slide="1">
+      <span class="show-for-sr">Second slide details.</span>
+    </button>
+    <button data-slide="2">
+      <span class="show-for-sr">Third slide details.</span>
+    </button>
+  </nav>
+
+</div>
