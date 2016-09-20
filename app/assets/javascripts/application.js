@@ -12,5 +12,25 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require foundation
+
+$(function(){ $(document).foundation(); });
+
+
+$(document).ready(function(){
+  $('.main_nav ul li.dropdown a').click(function(e){
+    e.preventDefault();
+    var displayMenu=!$(this).hasClass('click');
+    var element = $(this);
+    $(".main_nav ul li a").removeClass("click");
+    if(displayMenu){
+      element.addClass('click');
+      $('.gradient').css('opacity',1);
+      $('.submenu').slideDown();
+    }else{
+      $('.gradient').css('opacity',0);
+      $('.submenu').slideUp();
+    }
+  })
+
+});

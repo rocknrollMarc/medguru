@@ -6,6 +6,9 @@ class PagesController < ApplicationController
       slug = params[:path]
     end
     @page = Page.where(slug: slug).first
+    if @page.blank? || slug == ""
+      render 'startpage', layout: 'startpage'
+    end
   end
 
 end

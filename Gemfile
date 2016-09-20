@@ -27,7 +27,6 @@ gem 'devise'
 gem 'acts_as_list'
 gem 'ckeditor'
 gem 'carrierwave'
-gem "nested_form"
 gem 'mini_magick'
 gem 'awesome_nested_set' # or any similar gem (gem 'nested_set')
 gem 'the_sortable_tree', '~> 2.5.0'
@@ -42,6 +41,9 @@ gem 'puma'
 gem 'sidekiq'
 gem 'kaminari'
 gem "rolify"
+gem 'foundation-rails', github: 'zurb/foundation-rails'
+gem 'foundation-icons-sass-rails', github: 'zaiste/foundation-icons-sass-rails'
+gem 'bourbon'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
