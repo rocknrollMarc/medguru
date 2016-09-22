@@ -44,6 +44,7 @@ gem "rolify"
 gem 'foundation-rails', github: 'zurb/foundation-rails'
 gem 'foundation-icons-sass-rails', github: 'zaiste/foundation-icons-sass-rails'
 gem 'bourbon'
+gem 'rails-i18n'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

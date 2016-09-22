@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912110433) do
+ActiveRecord::Schema.define(version: 20160922125446) do
 
   create_table "accesses", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -122,17 +122,23 @@ ActiveRecord::Schema.define(version: 20160912110433) do
   add_index "parts", ["page_id"], name: "index_parts_on_page_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.text     "body",        limit: 65535
-    t.float    "difficulty",  limit: 24
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-    t.string   "intern_name", limit: 255
-    t.boolean  "published",                 default: false
+    t.string   "title",         limit: 255
+    t.text     "body",          limit: 65535
+    t.float    "difficulty",    limit: 24
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.string   "intern_name",   limit: 255
+    t.boolean  "published",                   default: false
+    t.boolean  "meta_question",               default: false
+    t.boolean  "subquestion",                 default: false
+    t.integer  "question_id",   limit: 4
+    t.integer  "category_id",   limit: 4
   end
 
+  add_index "questions", ["category_id"], name: "index_questions_on_category_id", using: :btree
   add_index "questions", ["intern_name"], name: "index_questions_on_intern_name", using: :btree
   add_index "questions", ["published"], name: "index_questions_on_published", using: :btree
+  add_index "questions", ["question_id"], name: "index_questions_on_question_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name",          limit: 255

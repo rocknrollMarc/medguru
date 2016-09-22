@@ -1,5 +1,6 @@
 class Admin::AdminController < ApplicationController
   layout "admin"
+  protect_from_forgery prepend: true
   before_action :authenticate_user!
   before_action :authenticate_role!
 

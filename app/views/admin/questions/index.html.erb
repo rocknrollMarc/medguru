@@ -27,9 +27,11 @@
         <h3 class="box-title">Alle Fragen</h3>
 
         <div class="box-tools pull-right" data-toggle="tooltip" title="" data-original-title="Neue Seite erstellen">
-            <%= link_to 'Neue Frage erstellen', new_admin_question_path, type: "button", class:"btn btn-default btn-sm", title: 'Neue Seite erstellen' %>
-        </div>
+          <a class="btn btn-default btn-sm" title='Neue Seite erstellen' id='question_modal_button' data-toggle="modal" data-target="#open-modal">
+            Neue Frage erstellen
+          </a>
 
+        </div>
 
       </div>
 
@@ -48,30 +50,106 @@
                   <th>Aktionen</th>
                 </tr>
                 <% for question in @questions %>
-                  <tr>
-                    <td><%= question.id %></td>
-                    <td><%= question.intern_name %></td>
-                    <td><%= question.category %></td>
-                    <td><%= question.owner %></td>
-                    <td><%= question.status %></td>
-                    <td><%= link_to 'Details zeigen', admin_question_path(question) %>
+                <tr>
+                  <td><%= question.id %></td>
+                  <td><%= question.intern_name %></td>
+                  <td><%= question.category.full_name if question.category.present? %></td>
+                  <td><%= question.owner %></td>
+                  <td><%= question.status %></td>
+                  <td><%= link_to 'Details zeigen', admin_question_path(question) %>
                   </tr>
-                <% end %>
+                  <% end %>
 
-              </table>
+                </table>
 
-
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-5">
-              <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-            </div>
-            <div class="col-sm-7">
-              <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
-                <%= paginate @questions if @questions.any? %>
+            <div class="row">
+              <div class="col-sm-5">
+                <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+              </div>
+              <div class="col-sm-7">
+                <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                  <%= paginate @questions if @questions.any? %>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <% content_for :modal do %>
+  <div class="modal" id="open-modal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Neue Frage erstellen</h4>
+        </div>
+        <div class="modal-body">
+          <form action="/admin/questions/new" method="get" class="form" id="new_form">
+
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="meta" id="checkbox_meta"/>
+                Textverständnis Frage
+              </label>
+            </div>
+
+            <br/>
+            <label>Anzahl der Fragen
+            </label>
+
+            <select name="questions" disabled class="form-control" id="questions_count">
+              <option value="none">Bitte Auswählen</option>
+              <% 6.times do |i| %>
+              <option value="<%= i+1%>"><%= i+1%></option>
+              <% end %>
+            </select>
+
+            <br/>
+            <label>Anzahl der Antworten</label>
+            <select name="answers" class="form-control">
+              <option value="none">Bitte Auswählen</option>
+              <% 6.times do |i| %>
+                <option value="<%= i+1%>"><%= i+1%></option>
+              <% end %>
+
+            </select>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Schliesen</button>
+          <button type="button" class="btn btn-primary" id="create_new">Neu erstellen</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+  <% end %>
+
+
+<% content_for :js do %>
+
+  <script type="text/javascript">
+      $(document).ready(function(){
+        $('#checkbox_meta').change(function () {
+          if($(this).is( ":checked" )){
+            $('#questions_count').prop('disabled', false);
+          }else{
+            $('#questions_count').prop('disabled', 'disabled');
+          }
+        });
+        $('#create_new').click(function(){
+          $('#new_form').submit()
+        });
+      });
+  </script>
+
+
+<% end %>

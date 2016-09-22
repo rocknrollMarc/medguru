@@ -19,6 +19,7 @@
   </head>
 
   <body class="hold-transition skin-blue sidebar-mini ">
+
     <div class="wrapper">
 
       <!-- Main Header -->
@@ -75,6 +76,14 @@
         <!-- Main content -->
         <section class="content">
 
+          <% flash.each do |key, msg| %>
+          <div class="row">
+            <div class="alert alert-danger alert-dismissible">
+              <%= msg %>
+            </div>
+          </div>
+          <% end %>
+
           <%= yield %>
 
         </section>
@@ -102,6 +111,7 @@ Alle rechte vorbehalten.
 
     <%= yield :js %>
 
+    <%= yield :modal %>
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
        Both of these plugins are recommended to enhance the

@@ -34,13 +34,6 @@
 
         <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 
-          <% flash.each do |key, msg| %>
-          <div class="row">
-            <div class="alert alert-danger alert-dismissible">
-              <%= msg %>
-            </div>
-          </div>
-          <% end %>
           <% if @question.errors.any? %>
           <div class="col-sm-12">
             <div class="alert alert-danger alert-dismissible">
@@ -58,24 +51,11 @@
           <% end %>
         </div>
 
-          <div class="form-group">
-            <%= f.label :intern_name %>
-            <%= f.text_field :intern_name, placeholder: 'Der Interne Name der Frage', class: 'form-control' %>
-          </div>
+        <div class="answers">
+          <%= f.submit 'Speichern', class:'btn btn-default btn-sm' %>
+        </div>
 
-          <div class="form-group">
-            <%= f.label :difficulty %>
-            <%= f.select :difficulty, options_for_select([['Einfach', 30], ['Mittel', 60], ['Schwer', 90]], f.object.difficulty),{include_blank: "Schwierigkeit auswählen"}, class: 'form-control' %>
-          </div>
-
-          <div class="form-group">
-            <%= f.cktext_area :body,cols: 40, ckeditor: { toolbar: 'mini' } %>
-          </div>
-
-          <div class="answers">
-            <%= f.fields_for :answers %>
-            <p style="text-align: right"><%= f.link_to_add "Antwort hinzufügen", :answers , class:'btn btn-default btn-sm'%></p>
-          </div>
+          <%= render 'form', f: f %>
 
           <div class="answers">
             <%= f.submit 'Speichern', class:'btn btn-default btn-sm' %>

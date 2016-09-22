@@ -3,6 +3,7 @@ class Category < ActiveRecord::Base
   has_many :categories
   has_many :working_scopes
 
+  has_many :questions, -> { where scopes: 'questions' }
 
   def self.categories_by_scope
     scopes = ['questions','seminare','tutorials','test','books'].sort
@@ -19,6 +20,6 @@ class Category < ActiveRecord::Base
     if category.present?
       full = category.full_name + " - "
     end
-    return full + name 
+    return full + name
   end
 end
