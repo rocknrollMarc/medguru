@@ -1,0 +1,55 @@
+<% unless f.object.subquestion %>
+<div class="form-group">
+  <%= f.label :intern_name %>
+  <%= f.text_field :intern_name, placeholder: 'Der Interne Name der Frage', class: 'form-control' %>
+</div>
+<% end %>
+
+<%= f.hidden_field :subquestion %>
+<%= f.hidden_field :meta_question %>
+
+
+<% unless f.object.meta_question %>
+
+<div class="form-group">
+  <%= f.label :difficulty %>
+  <%= f.select :difficulty, options_for_select([['Einfach', 30], ['Mittel', 60], ['Schwer', 90]], f.object.difficulty),{include_blank: "Schwierigkeit auswählen"}, class: 'form-control' %>
+</div>
+
+<% end %>
+
+<% unless f.object.subquestion %>
+
+<div class="form-group">
+  <%= f.label :category_id %>
+  <%= f.select :category_id, options_for_select(Question.category_leafs, f.object.category_id),{include_blank: "Kategorie auswählen"}, class: 'form-control' %>
+</div>
+
+<% end %>
+
+
+
+<div class="form-group">
+  <%= f.cktext_area :body,cols: 40, ckeditor: { toolbar: 'mini' } %>
+</div>
+<% unless f.object.meta_question %>
+
+Antworten
+<div class="answers">
+  <%= f.fields_for :answers %>
+  <p style="text-align: right"><%= f.link_to_add "Antwort hinzufügen", :answers , class:'btn btn-default btn-sm'%></p>
+</div>
+
+<% else %>
+
+
+<div class="answers">
+
+Unterfragen
+
+  <%= f.fields_for :questions %>
+  <p style="text-align: right"><%= f.link_to_add "Frage hinzufügen", :questions , class:'btn btn-default btn-sm'%></p>
+</div>
+
+
+<% end %>
