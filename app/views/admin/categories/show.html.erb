@@ -36,8 +36,19 @@
     <% if @categories.any? %>
     <%= render 'categories', categories: @categories %>
   <% else %>
-    <div class="box-body" style="text-align:center; padding: 5px">
-      Keine Unterkategorien vorhanden
+    <div class="box-body">
+
+      <% if @category.scope == "questions" %>
+        <%= form_for [:admin, @category] do |f| %>
+          <%= f.label 'Vorlage für Fragen' %>
+          <%= f.select :template, options_for_select(QuestionTemplateConfiguration.new.names, f.object.template),{include_blank: "Vorlage Auswählen"}, class: 'form-control' %><br />
+          <%= f.submit 'Speichern' %>
+        <% end %>
+      <% end %>
+      <div style="text-align:center">
+        <br />
+        Keine Unterkategorien vorhanden
+      </div>
     </div>
     <% end %>
   </div>

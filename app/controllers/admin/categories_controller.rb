@@ -14,4 +14,16 @@ class Admin::CategoriesController < Admin::AdminController
     params[:per] = 10 if params[:per].blank?
     @categories = @category.categories.page(params[:page]).per(params[:per])
   end
+
+
+  def update
+    @category = Category.find(params[:id])
+    @category.update(category_attributes)
+    redirect_to admin_category_path(@category), notice: 'Aktualisiert'
+  end
+
+private
+  def category_attributes
+    params.require(:category).permit(:template)
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922125446) do
+ActiveRecord::Schema.define(version: 20160929115752) do
 
   create_table "accesses", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20160922125446) do
     t.integer  "category_id", limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "template",    limit: 255
   end
 
   add_index "categories", ["category_id"], name: "index_categories_on_category_id", using: :btree
@@ -122,17 +123,25 @@ ActiveRecord::Schema.define(version: 20160922125446) do
   add_index "parts", ["page_id"], name: "index_parts_on_page_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string   "title",         limit: 255
-    t.text     "body",          limit: 65535
-    t.float    "difficulty",    limit: 24
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
-    t.string   "intern_name",   limit: 255
-    t.boolean  "published",                   default: false
-    t.boolean  "meta_question",               default: false
-    t.boolean  "subquestion",                 default: false
-    t.integer  "question_id",   limit: 4
-    t.integer  "category_id",   limit: 4
+    t.string   "title",             limit: 255
+    t.text     "body",              limit: 65535
+    t.float    "difficulty",        limit: 24
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "intern_name",       limit: 255
+    t.boolean  "published",                       default: false
+    t.boolean  "meta_question",                   default: false
+    t.boolean  "subquestion",                     default: false
+    t.integer  "question_id",       limit: 4
+    t.integer  "category_id",       limit: 4
+    t.boolean  "has_solution"
+    t.text     "solution",          limit: 65535
+    t.string   "reference_image",   limit: 255
+    t.string   "perspective_image", limit: 255
+    t.string   "downloadable",      limit: 255
+    t.boolean  "has_image",                       default: false
+    t.boolean  "has_downloadable",                default: false
+    t.boolean  "has_perspective",                 default: false
   end
 
   add_index "questions", ["category_id"], name: "index_questions_on_category_id", using: :btree

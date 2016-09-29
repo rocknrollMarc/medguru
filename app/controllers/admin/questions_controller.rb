@@ -4,23 +4,17 @@ class Admin::QuestionsController < Admin::AdminController
   end
 
   def new
-    answers_count = paramValueToInt(params[:answers])
-    @question = Question.new
-
-    questions = [@question]
-
-    if params[:meta].present?
-      questions_count = paramValueToInt(params[:questions])
-      @question.meta_question = true
-      questions_count.times { |_x| @question.questions.build(subquestion: true) }
-      puts questions_count
-      questions = @question.questions
+    category_id = paramValueToInt(params[:category_id])
+    @category = Category.find(category_id)
+    qtc = QuestionTemplateConfiguration.new
+    template = qtc.config('standard')
+    if @category.template.present?
+      _templ = qtc.config(@category.template)
+      puts _templ
+      template = _templ if _templ.present?
     end
-    for question in questions
-      answers_count.times { |_x| question.answers.build }
-      puts answers_count
-    end
-    puts @question.questions.to_json
+    @question = qtc.build_question(template[:layout])
+    @question.category_id = @category.id
   end
 
   def show
@@ -39,8 +33,25 @@ class Admin::QuestionsController < Admin::AdminController
 
   private
 
+
+
+
   def question_params
-    params.require(:question).permit(:intern_name, :body, :difficulty, :subquestion, :meta_question, :category_id, answers_attributes: [:id, :body, :correct_answer, :_destroy], questions_attributes: [:body, :difficulty, :meta_question, :subquestion, answers_attributes: [:id, :body, :correct_answer, :_destroy]])
+    params.require(:question).permit(:intern_name,
+                                     :body,
+                                     :difficulty,
+                                     :subquestion,
+                                     :meta_question,
+                                     :category_id,
+                                     :reference_image,
+                                     :has_image,
+                                     :perspective_image,
+                                     :has_perspective,
+                                     :downloadable,
+                                     :has_downloadable,
+                                     :solution,
+                                     :has_solution,
+                                     answers_attributes: [:id, :body, :correct_answer, :_destroy], questions_attributes: [:body, :difficulty, :meta_question, :subquestion, answers_attributes: [:id, :body, :correct_answer, :_destroy]])
   end
 
   def paramValueToInt(value)

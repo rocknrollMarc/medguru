@@ -91,31 +91,11 @@
         </div>
         <div class="modal-body">
           <form action="/admin/questions/new" method="get" class="form" id="new_form">
-
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="meta" id="checkbox_meta"/>
-                Textverständnis Frage
-              </label>
-            </div>
-
-            <br/>
-            <label>Anzahl der Fragen
-            </label>
-
-            <select name="questions" disabled class="form-control" id="questions_count">
-              <option value="none">Bitte Auswählen</option>
-              <% 6.times do |i| %>
-              <option value="<%= i+1%>"><%= i+1%></option>
-              <% end %>
-            </select>
-
-            <br/>
-            <label>Anzahl der Antworten</label>
-            <select name="answers" class="form-control">
-              <option value="none">Bitte Auswählen</option>
-              <% 6.times do |i| %>
-                <option value="<%= i+1%>"><%= i+1%></option>
+            <label>Die Kategorie auswählen, die richtige Vorlage wird erstellt.</label>
+            <select name="category_id" class="form-control" id="category_id" required="">
+              <option value="none">Bitte Kategorie Auswählen</option>
+              <% Question.category_leafs.each do |cat| %>
+              <option value="<%=cat[1] %>"><%= cat[0]%></option>
               <% end %>
 
             </select>
@@ -133,23 +113,13 @@
   <!-- /.modal -->
   <% end %>
 
-
-<% content_for :js do %>
-
+  <% content_for :js do %>
   <script type="text/javascript">
-      $(document).ready(function(){
-        $('#checkbox_meta').change(function () {
-          if($(this).is( ":checked" )){
-            $('#questions_count').prop('disabled', false);
-          }else{
-            $('#questions_count').prop('disabled', 'disabled');
-          }
-        });
-        $('#create_new').click(function(){
-          $('#new_form').submit()
-        });
+    $(document).ready(function () {
+
+      $('#create_new').click(function () {
+        $('#new_form').submit();
       });
+    });
   </script>
-
-
-<% end %>
+  <% end %>

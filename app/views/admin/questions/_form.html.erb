@@ -8,7 +8,6 @@
 <%= f.hidden_field :subquestion %>
 <%= f.hidden_field :meta_question %>
 
-
 <% unless f.object.meta_question %>
 
 <div class="form-group">
@@ -17,39 +16,95 @@
 </div>
 
 <% end %>
+<% unless f.object.category.present? && f.object.category.template=='instill' %>
 
 <% unless f.object.subquestion %>
+Beschreibung
+<% else %>
+Frage
+<% end %>
 
 <div class="form-group">
-  <%= f.label :category_id %>
-  <%= f.select :category_id, options_for_select(Question.category_leafs, f.object.category_id),{include_blank: "Kategorie auswählen"}, class: 'form-control' %>
+  <%= f.cktext_area :body,cols: 40, ckeditor: { toolbar: 'mini' } %>
 </div>
+<% end %>
+
+<% unless f.object.subquestion %>
+<%= f.hidden_field :category_id %>
+
+<%= f.check_box :has_solution %>
+<%= f.label :solution, 'Musterlösung' %><br/>
+<div style="display: <%= f.object.has_solution ? 'block' : 'none' %>" id="solution_wrapper">
+<%= f.cktext_area :solution,cols: 40, ckeditor: { toolbar: 'mini', readOnly: !f.object.has_solution} %>
+</div>
+<% content_for :js do %>
+<script type="text/javascript">
+  $(document).ready(function () {
+
+    $('#question_has_solution').change(function () {
+      if($(this).is(":checked")){
+        $('#solution_wrapper').show();
+      }else{
+        $('#solution_wrapper').hide();
+      }
+      CKEDITOR.instances.question_solution.setReadOnly(!$(this).is(":checked"));
+    });
+  });
+</script>
+
+<% end %>
+<% end %>
+
+<% unless f.object.meta_question %>
+
+
+
+<% if f.object.category.present? && (f.object.category.template=='figures' || f.object.category.template=='instill') %>
+
+  <%= f.hidden_field :has_image %>
+  <%= f.label :reference_image, 'Referenz Bild' %>
+  <%= f.file_field :reference_image %> <br />
+
+
+  <%= f.hidden_field :has_perspective %>
+  <% if f.object.category.template=='figures' %>
+    <%= f.label :perspective_image, 'Perspektiv Bild' %>
+  <% else %>
+    <%= f.label :perspective_image, 'Unausgefült' %>
+  <% end %>
+  <%= f.file_field :perspective_image %> <br />
+
+  <%= f.fields_for :answers do |a| %>
+    <%= a.check_box :correct_answer %>
+    <%= a.hidden_field :body %>
+    <%= a.object.body %>
+  <% end %>
+
+<% elsif f.object.category.present? && f.object.category.template=='intent' %>
+
+  <%= f.hidden_field :has_downloadable %>
+  <%= f.label :downloadable, 'Download' %>
+  <%= f.file_field :download %> <br />
+
+<% else %>
+
+  <strong>Antwort</strong>
+  <div class="answers">
+    <%= f.fields_for :answers %>
+    <p style="text-align: right"><%= f.link_to_add "Antwort hinzufügen", :answers , class:'btn btn-default btn-sm'%></p>
+  </div>
 
 <% end %>
 
 
 
-<div class="form-group">
-  <%= f.cktext_area :body,cols: 40, ckeditor: { toolbar: 'mini' } %>
-</div>
-<% unless f.object.meta_question %>
-
-Antworten
-<div class="answers">
-  <%= f.fields_for :answers %>
-  <p style="text-align: right"><%= f.link_to_add "Antwort hinzufügen", :answers , class:'btn btn-default btn-sm'%></p>
-</div>
 
 <% else %>
-
-
 <div class="answers">
 
-Unterfragen
+  Unterfragen
 
   <%= f.fields_for :questions %>
   <p style="text-align: right"><%= f.link_to_add "Frage hinzufügen", :questions , class:'btn btn-default btn-sm'%></p>
 </div>
-
-
 <% end %>

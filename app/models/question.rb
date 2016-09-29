@@ -14,6 +14,12 @@ class Question < ActiveRecord::Base
   validates :intern_name, presence: true, unless: :subquestion
   validates :category_id, presence: true, unless: :subquestion
 
+  validates :reference_image, presence: true, if: :has_image
+  validates :perspective_image, presence: true, if: :has_perspective
+  validates :downloadable, presence: true, if:  :has_downloadable
+  validates :solution, presence: true, if:  :has_solution
+
+
   validates :body, presence: true
   validates :answers, length: { minimum: 2 }, unless: :meta_question
   validates :difficulty, presence: true, unless: :meta_question
