@@ -45,7 +45,8 @@ class Question < ActiveRecord::Base
 
 
   def owner
-    activities.first.owner.try(:name) || activities.first.owner.try(:email)
+    return activities.first.owner.try(:name) if activities.first.owner.try(:name).present?
+    activities.first.owner.try(:email)
   end
 
   def status
