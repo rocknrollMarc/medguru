@@ -1,0 +1,43 @@
+<table class="table">
+  <tr>
+    <th>Interner Name</th>
+    <th>Anzahl der Antworten</th>
+    <th>Musterlösung vorhanden</th>
+    <th>Author</th>
+    <th>Veröffentlicht</th>
+    <th>Veröffentlicht von</th>
+  </tr>
+  <tr>
+    <td><%= question.intern_name %></td>
+    <td><%= question.answers.count %></td>
+    <td><%= question.has_solution ? 'Ja' : 'Nein'%></td>
+    <td><%= question.activities.first.owner.name %></td>
+    <td><%= question.published ? 'Ja' : 'Nein'%></td>
+    <td><%= question.published ? 'Ja' : 'Nein'%></td>
+  </tr>
+</table>
+
+<h3>Text</h3>
+<%= raw question.body %>
+
+<% if question.has_solution %>
+<div class="description">
+  <h1>Muserlösung</h1>
+  <%= raw question.solution %>
+</div>
+<% end %>
+
+<% if question.has_source %>
+  <div class="description">
+    <h1>Quellenangaben</h1>
+    <%= raw question.source %>
+  </div>
+<% end %>
+
+<hr />
+
+<% for q in question.questions %>
+<strong>Frage</strong>
+<%= render 'standard', question: q %>
+<hr />
+<% end %>
