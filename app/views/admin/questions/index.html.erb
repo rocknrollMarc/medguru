@@ -67,8 +67,8 @@
                   <td><%= "TODO" %></td>
                   <td><%= "TODO" %></td>
 
-                  <td><%= link_to 'Details zeigen', admin_question_path(question) %> <br />
-                    <%= link_to 'Bearbeiten', edit_admin_question_path(question) %>
+                  <td><%= link_to 'Details zeigen', admin_question_path(question), class: 'btn btn-default btn-sm' %> <br /><br />
+                    <%= link_to 'Bearbeiten', edit_admin_question_path(question), class: 'btn btn-default btn-sm' %>
                   </tr>
                   <% end %>
 

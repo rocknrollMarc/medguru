@@ -59,7 +59,7 @@ class Question < ActiveRecord::Base
         questions.sum(:difficulty) / questions.length
       rescue
         0
-      end        
+      end
     else
       difficulty
     end
