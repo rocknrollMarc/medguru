@@ -13,5 +13,6 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
+/public/uploads/*
 !/log/.keep
 /tmp

@@ -43,20 +43,32 @@
               <table class="table">
                 <tr>
                   <th>ID</th>
-                  <th>Interne Name</th>
                   <th>Kategorie</th>
-                  <th>Ersteller</th>
+                  <th>Schwierigkeit</th>
+                  <th>Interne Name</th>
+                  <th>Autor / Erstellungsdatum</th>
+                  <th>Lektor / Freigabe</th>
                   <th>Status</th>
+                  <th>Bewertung</th>
+                  <th>Anzahl der Aufrufe</th>
+                  <th>Fehermeldungen und Kommentare</th>
                   <th>Aktionen</th>
                 </tr>
                 <% for question in @questions %>
                 <tr>
                   <td><%= question.id %></td>
-                  <td><%= question.intern_name %></td>
                   <td><%= question.category.full_name if question.category.present? %></td>
-                  <td><%= question.owner %></td>
+                  <td><%= question.calculated_difficulty %></td>
+                  <td><%= question.intern_name %> </td>
+                  <td><%= question.owner %>/<br /> <%=l question.created_at  %></td>
+                  <td><%= "TODO" %></td>
                   <td><%= question.status %></td>
-                  <td><%= link_to 'Details zeigen', admin_question_path(question) %>
+                  <td><%= "TODO" %></td>
+                  <td><%= "TODO" %></td>
+                  <td><%= "TODO" %></td>
+
+                  <td><%= link_to 'Details zeigen', admin_question_path(question) %> <br />
+                    <%= link_to 'Bearbeiten', edit_admin_question_path(question) %>
                   </tr>
                   <% end %>
 

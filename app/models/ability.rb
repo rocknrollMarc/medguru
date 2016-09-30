@@ -6,15 +6,6 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
 
-    if user.has_role? "SUPERADMIN"
-      can :manage, :all
-    end
-
-    if user.has_role? "ADMIN"
-      can :manage, :all
-      cannot :manage, :layouts
-    end
-
     if user.is_team?
       can :access, :ckeditor
       can :manage, Ckeditor::Picture
@@ -23,6 +14,17 @@ class Ability
       can :read, Ckeditor::Picture
       can :read, Ckeditor::AttachmentFile
     end
+
+    if user.has_role? "ADMIN"
+      can :manage, :all
+      cannot :manage, :layouts
+    end
+
+    if user.has_role? "SUPERADMIN"
+      can :manage, :all
+    end
+
+
 
     #   if user.admin?
     #     can :manage, :all

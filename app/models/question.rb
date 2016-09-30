@@ -53,5 +53,17 @@ class Question < ActiveRecord::Base
   end
 
 
+  def calculated_difficulty
+    if meta_question
+      begin
+        questions.sum(:difficulty) / questions.length
+      rescue
+        0
+      end        
+    else
+      difficulty
+    end
+  end
+
 
 end
