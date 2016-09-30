@@ -18,6 +18,7 @@ class Question < ActiveRecord::Base
   validates :perspective_image, presence: true, if: :has_perspective
   validates :downloadable, presence: true, if:  :has_downloadable
   validates :solution, presence: true, if:  :has_solution
+  validates :source, presence: true, if:  :has_source
 
 
   validates :body, presence: true
@@ -26,6 +27,10 @@ class Question < ActiveRecord::Base
   validate :has_correct_answer, unless: :meta_question
 
   validates :questions, length: { minimum: 1 }, if: :meta_question
+
+  mount_uploader :downloadable, FileUploader
+  mount_uploader :perspective_image, QuestionImageUploader
+  mount_uploader :reference_image, QuestionImageUploader
 
 
   def has_correct_answer

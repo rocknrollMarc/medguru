@@ -37,7 +37,7 @@ build_intent
     question = Question.new
     question.has_image = true
     question.has_perspective = true
-    ['l', 'r', 'h', 'o', 'u'].each {|x| question.answers.build(body: "#{x}")}
+    ['r', 'l', 'u', 'o', 'h'].each {|x| question.answers.build(body: "#{x}")}
     question
   end
 

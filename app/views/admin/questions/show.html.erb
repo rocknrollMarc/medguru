@@ -24,10 +24,22 @@
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header">
+
+        <div class="box-tools pull-right" data-toggle="tooltip" title="" data-original-title="Neue Seite erstellen">
+            <%= link_to 'Bearbeiten', edit_admin_question_path, class: 'btn btn-default btn-sm' %>
+        </div>
+
+
       </div>
 
+
+
       <div class="box-body">
-        ToDo
+        <% if @question.category.template == 'standard' || @question.category.template.blank? %>
+          <%= render 'standard', question: @question %>
+        <% elsif @question.category.template ==  'text' %>
+          <%= render 'text', question: @question %>
+        <% end %>
       </div>
     </div>
   </div>

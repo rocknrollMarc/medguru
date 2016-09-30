@@ -12,7 +12,7 @@
 
 <div class="form-group">
   <%= f.label :difficulty %>
-  <%= f.select :difficulty, options_for_select([['Einfach', 30], ['Mittel', 60], ['Schwer', 90]], f.object.difficulty),{include_blank: "Schwierigkeit auswählen"}, class: 'form-control' %>
+  <%= f.select :difficulty, options_for_select([['Einfach', 30], ['Mittel', 60], ['Schwer', 90]], f.object.difficulty.to_i),{include_blank: "Schwierigkeit auswählen"}, class: 'form-control' %>
 </div>
 
 <% end %>
@@ -37,6 +37,17 @@ Frage
 <div style="display: <%= f.object.has_solution ? 'block' : 'none' %>" id="solution_wrapper">
 <%= f.cktext_area :solution,cols: 40, ckeditor: { toolbar: 'mini', readOnly: !f.object.has_solution} %>
 </div>
+
+<br />
+<%= f.check_box :has_source %>
+<%= f.label :source, 'Quellenangaben' %><br/>
+<div style="display: <%= f.object.has_source ? 'block' : 'none' %>" id="source_wrapper">
+<%= f.cktext_area :source,cols: 40, ckeditor: { toolbar: 'mini', readOnly: !f.object.has_source} %>
+</div>
+
+
+
+
 <% content_for :js do %>
 <script type="text/javascript">
   $(document).ready(function () {
@@ -49,6 +60,16 @@ Frage
       }
       CKEDITOR.instances.question_solution.setReadOnly(!$(this).is(":checked"));
     });
+
+    $('#question_has_source').change(function () {
+      if($(this).is(":checked")){
+        $('#source_wrapper').show();
+      }else{
+        $('#source_wrapper').hide();
+      }
+      CKEDITOR.instances.question_source.setReadOnly(!$(this).is(":checked"));
+    });
+
   });
 </script>
 

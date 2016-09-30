@@ -1,4 +1,7 @@
 class Admin::QuestionsController < Admin::AdminController
+
+  before_action :find_question, only: [:edit, :show, :update]
+
   def index
     @questions = Question.where(subquestion: false).page(params[:page]).per(params[:per])
   end
@@ -17,6 +20,9 @@ class Admin::QuestionsController < Admin::AdminController
     @question.category_id = @category.id
   end
 
+  def edit
+  end
+
   def show
   end
 
@@ -31,10 +37,21 @@ class Admin::QuestionsController < Admin::AdminController
     end
   end
 
+
+  def update
+    if @question.update(question_params)
+      redirect_to admin_question_path(@question)
+    else
+      render 'edit'
+    end
+  end
+
   private
 
 
-
+  def find_question
+    @question = Question.find(params[:id])
+  end
 
   def question_params
     params.require(:question).permit(:intern_name,
@@ -51,7 +68,9 @@ class Admin::QuestionsController < Admin::AdminController
                                      :has_downloadable,
                                      :solution,
                                      :has_solution,
-                                     answers_attributes: [:id, :body, :correct_answer, :_destroy], questions_attributes: [:body, :difficulty, :meta_question, :subquestion, answers_attributes: [:id, :body, :correct_answer, :_destroy]])
+                                     :source,
+                                     :has_source,                                     
+                                     answers_attributes: [:id, :body, :correct_answer, :_destroy], questions_attributes: [:id, :body, :difficulty, :meta_question, :subquestion, answers_attributes: [:id, :body, :correct_answer, :_destroy]])
   end
 
   def paramValueToInt(value)

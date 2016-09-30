@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929115752) do
+ActiveRecord::Schema.define(version: 20160930164707) do
 
   create_table "accesses", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -37,11 +37,11 @@ ActiveRecord::Schema.define(version: 20160929115752) do
   add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
 
   create_table "answers", force: :cascade do |t|
-    t.string   "body",           limit: 255
+    t.text     "body",           limit: 65535
     t.boolean  "correct_answer"
     t.integer  "question_id",    limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
@@ -142,6 +142,8 @@ ActiveRecord::Schema.define(version: 20160929115752) do
     t.boolean  "has_image",                       default: false
     t.boolean  "has_downloadable",                default: false
     t.boolean  "has_perspective",                 default: false
+    t.boolean  "has_source"
+    t.text     "source",            limit: 65535
   end
 
   add_index "questions", ["category_id"], name: "index_questions_on_category_id", using: :btree
