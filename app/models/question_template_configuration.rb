@@ -17,6 +17,8 @@ class QuestionTemplateConfiguration
       return build_standard
     elsif template == 'text'
       return build_text
+    elsif template == 'facts'
+      return build_text(config('facts'))
     elsif template == 'figures'
       return build_figures
     elsif template == 'instill'
@@ -55,8 +57,7 @@ build_intent
     question
   end
 
-  def build_text
-    conf = config('text')
+  def build_text(conf = config('text'))
     question = Question.new
     question.meta_question = true
     conf[:questions].times { |_x| question.questions.build(subquestion: true) }
@@ -133,6 +134,17 @@ build_intent
        downloadable: true,
        perspective: false,
        extra_image: true
+     },
+     {
+       name: 'Fakten lernen',
+       layout: 'facts',
+       subquestion: true,
+       meta_question: true,
+       answers: 5,
+       questions: 20,
+       downloadable: false,
+       perspective: false,
+       extra_image: false
      }]
   end
 end
