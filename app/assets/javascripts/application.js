@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require video
 
 $(function(){ $(document).foundation(); });
 
@@ -32,5 +33,31 @@ $(document).ready(function(){
       $('.submenu').slideUp();
     }
   })
+
+  $('.startpage_effects .columns').css('opacity','0')
+
+  function check_visibility(){
+
+      /* Check the location of each desired element */
+      $('.startpage_effects .columns').each( function(i){
+
+          var bottom_of_object = $(this).position().top;
+          var bottom_of_window = $(window).scrollTop() + $(window).height();
+          /* If the object is completely visible in the window, fade it it */
+          if( bottom_of_window > bottom_of_object ){
+              $(this).animate({'opacity':'1'}, 800);
+          }
+
+      });
+
+  }
+
+  check_visibility();
+
+  $(window).scroll( function(){
+
+    check_visibility();
+
+  });
 
 });

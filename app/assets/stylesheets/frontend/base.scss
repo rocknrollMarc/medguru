@@ -1,9 +1,14 @@
 @import "bourbon";
+
+.subnavwrapper {
+  border-bottom: 1px solid #ddd;
+}
+
 .navigation_container {
   z-index: 10;
   position: fixed;
   top: 0;
-  border-bottom: 1px solid #ddd;
+  //border-bottom: 1px solid #ddd;
   background: image-url('glass.png');
   padding: 10px 0 0;
   left: 0;
@@ -12,6 +17,7 @@
   @include transition-duration(1.0s);
   @include transition-timing-function(ease-in);
   @include transition-delay(0.5s);
+
   .gradient {
     background: #004799;
     background: -moz-linear-gradient(left, #004799 0%, #69aece 50%, #004799 100%);
@@ -28,12 +34,15 @@
     @include transition(opacity 0.3s ease-in 0s);
     z-index: 5;
   }
+
   .row {
     z-index: 1000;
     position: relative;
   }
+
   nav {
     padding-top: 1rem;
+
     ul {
       li {
         span {
@@ -43,48 +52,154 @@
           color: white;
           font-weight: bold;
         }
+
         a {
           color: white;
           text-transform: uppercase;
-          font-weight: bold;
-          padding-bottom: 2rem;
+          padding-bottom: 46px;
           height: 38px;
+          font-weight: 600;
+          box-sizing: border-box;
+          -webkit-tap-highlight-color: transparent;
+          font-size: 1rem;
+          -webkit-font-smoothing: antialiased;
+          text-align: center;
+
           &:hover {
-            border-bottom: 1px solid white;
+            border-bottom: 2px solid white;
           }
+
           i {
             font-size: 1.4rem;
             padding-bottom: 0;
           }
-          span.arrow{
+
+          span.arrow {
+            opacity: 0.75;
+            content: "";
             display: inline-block;
-            padding: 0px;
-            @include transform(rotate(90deg));
+            position: relative;
+            left: 6px;
+            top: -4px;
+            width: 9px;
+            height: 9px;
+            overflow: hidden;
+            border: 1px solid #fff;
+            border-top: 1px solid transparent;
+            border-left: 1px solid transparent;
+            box-sizing: border-box;
+            -webkit-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+            display: inline-block;
+            padding: 0;
+            @include transform(rotate(45deg));
             @include transition-property(transform);
             @include transition-duration(0.3s);
             font-weight: lighter;
           }
-          &.click{
-            span.arrow{
-              @include transform(rotate(-90deg));
 
+          &.click {
+            span.arrow {
+              top: 2px;
+              @include transform(rotate(-135deg));
             }
           }
         }
       }
     }
   }
+
   &.clicked {
     .gradient {
       opacity: 1;
     }
   }
 }
-.submenu{
+
+.submenu {
   display: none;
   color: white;
 }
+
 .megaslider {
   z-index: 1;
   height: 450px;
+}
+
+p{
+  display: block;
+-webkit-margin-before: 1em;
+-webkit-margin-after: 1em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+line-height: 1.5;
+margin: 0;
+margin-top: 16px;
+font-size: 16px;
+font-weight: 400;
+}
+
+h2 {
+  font-weight: 300;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #3f3f4d;
+}
+
+h3 {
+  line-height: 0.75;
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+h4{
+  margin-top: 2rem;
+  line-height: 0.75;
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: uppercase;
+  a{  font-weight: 700;
+
+    color: #d46230;
+    &:hover{
+      color: darken(#d46230, 10%);
+    }
+  }
+}
+
+.booksrotate{
+  position: relative;
+  top: -30px;
+  left: 160px;
+  @include transform(rotate(30deg));
+  .book1, .book2, .book3, .book4,{
+    height: 353px;
+  }
+  .book2, .book4,{
+    padding-top:30px;
+  }
+}
+
+
+.videobox {
+  padding-top: 4rem;
+
+  .playerwindow{
+    margin-bottom: 2rem;
+  }
+  .text {}
+}
+
+.tutor{
+  padding: 2rem 0;
+  background: image-url("backtutor.jpeg");
+  color: white;
+  h3{
+    font-size: 2rem;
+  }
 }

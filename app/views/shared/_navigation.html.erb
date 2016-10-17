@@ -1,45 +1,50 @@
 <div class="navigation_container">
-  <div class="gradient"></div>
+  <div class="gradient">
+    <div style="height: 85px; width:100%; border-bottom:1px solid #ddd;"></div>
+  </div>
+  <div class="subnavwrapper">
+    <div class="row">
+      <div class="large-3 columns">
+        <%= link_to root_path do %>
+        <%= image_tag 'logo.png' %>
+        <% end %>
+      </div>
+      <div class="large-9 columns">
+        <nav class="main_nav">
+          <ul class="nav menu align-right">
+            <li><%= link_to 'cards' do %>
+              <%= image_tag 'warenkorb.png' %>
+              <% end %></li>
+            <li><%= link_to 'Login', new_user_session_path %></li>
+            <li>
+              <span>|</span>
+            </li>
+            <li class="dropdown"><%= link_to '' do %>
+              Kurse
+              <span class="arrow"></span>
+              <% end %>
+            </li>
+            <li class="dropdown"><%= link_to '' do %>
+              INFOS
+              <span class="arrow"></span>
+              <% end %>
+            </li>
+            <li class="dropdown"><%= link_to '' do %>
+              E-Learning
+              <span class="arrow"></span>
+              <% end %>
+            </li>
+            <li class="dropdown"><%= link_to '' do %>
+              Bücher
+              <span class="arrow"></span>
+              <% end %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
   <div class="row">
-    <div class="large-3 columns">
-      <%= link_to root_path do %>
-      <%= image_tag 'logo.png' %>
-      <% end %>
-    </div>
-    <div class="large-9 columns">
-      <nav class="main_nav">
-        <ul class="nav menu align-right">
-          <li><%= link_to 'cards' do %>
-            <%= image_tag 'warenkorb.png' %>
-            <% end %></li>
-          <li><%= link_to 'Login', new_user_session_path %></li>
-          <li>
-            <span>|</span>
-          </li>
-          <li class="dropdown"><%= link_to '' do %>
-            Kurse
-            <span class="arrow">></span>
-            <% end %>
-          </li>
-          <li class="dropdown"><%= link_to '' do %>
-            INFOS
-            <span class="arrow">></span>
-            <% end %>
-          </li>
-          <li class="dropdown"><%= link_to '' do %>
-            E-Learning
-            <span class="arrow">></span>
-            <% end %>
-          </li>
-          <li class="dropdown"><%= link_to '' do %>
-            Bücher
-            <span class="arrow">></span>
-            <% end %>
-          </li>
-        </ul>
-      </nav>
-    </div>
-
     <div class="large-12 submenu">
       <div class="large-4 columns end">
         <h3>One</h4>
@@ -57,9 +62,12 @@
         <h3>One</h4>
         <p>lorem ipsum</p>
       </div>
+
+      <div class="clear"></div>
     </div>
 
   </div>
+
 </div>
 <div class="orbit" role="region" aria-label="Startpage Banner" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
   <ul class="orbit-container">
