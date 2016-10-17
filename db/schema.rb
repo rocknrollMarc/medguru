@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930164707) do
+ActiveRecord::Schema.define(version: 20161012094850) do
 
   create_table "accesses", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -89,6 +89,14 @@ ActiveRecord::Schema.define(version: 20160930164707) do
     t.string   "template",   limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "navigations", force: :cascade do |t|
+    t.string   "label",       limit: 255
+    t.string   "description", limit: 255
+    t.string   "url",         limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "pages", force: :cascade do |t|

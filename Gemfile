@@ -24,6 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "nested_form"
 gem 'public_activity'
 gem 'devise'
+gem 'mathjax-rails'
 gem 'acts_as_list'
 gem 'ckeditor'
 gem 'carrierwave'
@@ -45,6 +46,8 @@ gem 'foundation-rails', github: 'zurb/foundation-rails'
 gem 'foundation-icons-sass-rails', github: 'zaiste/foundation-icons-sass-rails'
 gem 'bourbon'
 gem 'rails-i18n'
+gem 'videojs_rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

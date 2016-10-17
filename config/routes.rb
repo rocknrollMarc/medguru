@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  mathjax 'mathjax'
+
   mount Ckeditor::Engine => '/ckeditor'
   namespace :admin do
     mount Ckeditor::Engine => '/ckeditor'
