@@ -1,0 +1,51 @@
+<table class="table">
+  <tr>
+    <th>Interner Name</th>
+    <th>Anzahl der Antworten</th>
+    <th>Musterlösung vorhanden</th>
+    <th>Author</th>
+    <th>Veröffentlicht</th>
+    <th>Veröffentlicht von</th>
+  </tr>
+  <tr>
+    <td><%= question.intern_name %></td>
+    <td><%= question.answers.count %></td>
+    <td><%= question.has_solution ? 'Ja' : 'Nein'%></td>
+    <td><%= question.activities.first.owner.name %></td>
+    <td><%= question.published ? 'Ja' : 'Nein'%></td>
+    <td><%= question.published ? 'Ja' : 'Nein'%></td>
+  </tr>
+</table>
+<% if question.body.present? %>
+<h3>Text</h3>
+<%= raw question.body %>
+<% end %>
+
+<% if question.has_solution %>
+<div class="description">
+  <h1>Muserlösung</h1>
+  <%= raw question.solution %>
+</div>
+<% end %>
+
+<% if question.has_source %>
+<div class="description">
+  <h1>Quellenangaben</h1>
+  <%= raw question.source %>
+</div>
+<% end %>
+    <div class="col-xs-6">
+      <h5>Referenz</h5>
+      <%= image_tag(question.reference_image_url, style: 'width:100%') %>
+    </div>
+
+    <div class="col-xs-6">
+      <h5>Perspektive</h5>
+      <%= image_tag(question.perspective_image_url, style: 'width:100%') %>
+    </div>
+<hr/>
+<br />
+Richtige Lösung:
+<% for a in question.answers %>
+<%= a.body if a.correct_answer %>
+<% end %>
