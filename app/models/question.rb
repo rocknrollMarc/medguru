@@ -21,7 +21,7 @@ class Question < ActiveRecord::Base
   validates :source, presence: true, if:  :has_source
 
 
-  validates :body, presence: true
+  validates :body, presence: true, unless: :figure_or_instill
   validates :answers, length: { minimum: 2 }, unless: :meta_question
   validates :difficulty, presence: true, unless: :meta_question
   validate :has_correct_answer, unless: :meta_question
@@ -32,6 +32,10 @@ class Question < ActiveRecord::Base
   mount_uploader :perspective_image, QuestionImageUploader
   mount_uploader :reference_image, QuestionImageUploader
 
+
+  def figure_or_instill
+    category.present? && (category.template=='figures' || category.template == 'instill')
+  end
 
   def has_correct_answer
     errors.add(:answers, 'muss genau eine richtige Antwort haben') if self.answers.map {|x| x.correct_answer}.reject(&:blank?).length != 1

@@ -39,6 +39,8 @@
           <%= render 'standard', question: @question %>
         <% elsif @question.category.template ==  'text' %>
           <%= render 'text', question: @question %>
+        <% elsif @question.category.template ==  'figures' %>
+        <%= render 'figures', question: @question %>
         <% end %>
       </div>
     </div>

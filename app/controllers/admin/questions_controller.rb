@@ -61,15 +61,17 @@ class Admin::QuestionsController < Admin::AdminController
                                      :meta_question,
                                      :category_id,
                                      :reference_image,
+                                     :reference_image_cache,
                                      :has_image,
                                      :perspective_image,
                                      :has_perspective,
+                                     :perspective_image_cache,
                                      :downloadable,
                                      :has_downloadable,
                                      :solution,
                                      :has_solution,
                                      :source,
-                                     :has_source,                                     
+                                     :has_source,
                                      answers_attributes: [:id, :body, :correct_answer, :_destroy], questions_attributes: [:id, :body, :difficulty, :meta_question, :subquestion, answers_attributes: [:id, :body, :correct_answer, :_destroy]])
   end
 

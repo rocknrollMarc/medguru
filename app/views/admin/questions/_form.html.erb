@@ -85,7 +85,8 @@ Frage
   <%= f.hidden_field :has_image %>
   <%= f.label :reference_image, 'Referenz Bild' %>
   <%= f.file_field :reference_image %> <br />
-
+  <%= f.hidden_field :reference_image_cache %>
+  <%= image_tag(f.object.reference_image_url, style: 'width: 120px') if f.object.reference_image? %>
 
   <%= f.hidden_field :has_perspective %>
   <% if f.object.category.template=='figures' %>
@@ -93,7 +94,11 @@ Frage
   <% else %>
     <%= f.label :perspective_image, 'Unausgefült' %>
   <% end %>
+
   <%= f.file_field :perspective_image %> <br />
+  <%= image_tag(f.object.perspective_image_url, style: 'width: 120px') if f.object.perspective_image? %>
+
+  <%= f.hidden_field :perspective_image_cache %>
 
   <%= f.fields_for :answers do |a| %>
     <%= a.check_box :correct_answer %>

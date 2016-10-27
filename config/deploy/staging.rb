@@ -6,11 +6,11 @@ set :rails_env, :production
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :app, %w{crocodealia@crocodealia.com}
-role :web, %w{crocodealia@crocodealia.com}
-role :db,  %w{crocodealia@crocodealia.com}
+role :app, %w{root@crocodealia.com}
+role :web, %w{root@crocodealia.com}
+role :db,  %w{root@crocodealia.com}
 
-set :deploy_to, "/home/crocodealia/applications/medgurus"
+set :deploy_to, "/var/www/applications/medgurus"
 
 
 # Extended Server Syntax
@@ -19,7 +19,7 @@ set :deploy_to, "/home/crocodealia/applications/medgurus"
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server 'crocodealia.com', user: 'crocodealia', roles: %w{web app}, my_property: :my_value
+server 'crocodealia.com', user: 'root', roles: %w{web app}, my_property: :my_value
 
 
 # you can set custom ssh options
