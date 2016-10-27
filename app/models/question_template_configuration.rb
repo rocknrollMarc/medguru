@@ -24,8 +24,19 @@ class QuestionTemplateConfiguration
     elsif template == 'instill'
       build_instill
     elsif template == 'intent'
-build_intent
+      build_intent
+    elsif template == 'pattern'
+      build_pattern
     end
+  end
+
+
+  def build_pattern
+    conf = config('pattern')
+    question = Question.new
+    question.has_image = true
+    conf[:answers].times { |_x| question.answers.build }
+    question
   end
 
   def build_standard

@@ -80,6 +80,7 @@ Frage
 
 
 
+
 <% if f.object.category.present? && (f.object.category.template=='figures' || f.object.category.template=='instill') %>
 
   <%= f.hidden_field :has_image %>
@@ -111,6 +112,21 @@ Frage
   <%= f.hidden_field :has_downloadable %>
   <%= f.label :downloadable, 'Download' %>
   <%= f.file_field :download %> <br />
+
+<% elsif f.object.category.present? && (f.object.category.template=='pattern') %>
+
+  <%= f.hidden_field :has_image %>
+  <%= f.label :reference_image, 'Referenz Bild' %>
+  <%= f.file_field :reference_image %> <br />
+  <%= f.hidden_field :reference_image_cache %>
+  <%= image_tag(f.object.reference_image_url, style: 'width: 120px') if f.object.reference_image? %>
+
+
+<strong>Antwort</strong>
+<div class="answers">
+  <%= f.fields_for :answers %>
+  <p style="text-align: right"><%= f.link_to_add "Antwort hinzufügen", :answers , class:'btn btn-default btn-sm'%></p>
+</div>
 
 <% else %>
 
